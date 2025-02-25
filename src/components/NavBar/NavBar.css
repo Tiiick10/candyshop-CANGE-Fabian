@@ -50,3 +50,70 @@
 .logout-btn:hover {
     background: darkred;
 }
+
+/* Bulle de comptage */
+.cart-link {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -100%;
+    right: -15%;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+/* Dropdown menu pour afficher les articles dans le panier */
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.dropdown-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-item-info span {
+    font-size: 14px;
+}
+
+.dropdown-item-info span:last-child {
+    color: gray;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
