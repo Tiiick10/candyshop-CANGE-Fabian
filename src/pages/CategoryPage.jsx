@@ -1,15 +1,16 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import ProductCard from '../components/ProductCard'
 import './CategoryPage.css'
 
 const allProducts = [
-  { id: 1, name: "Coca-Cola", category: "boissons", image: "/images/coca.jpg" },
-  { id: 2, name: "Chips BBQ", category: "snacks", image: "/images/chips-bbq.jpg" },
-  { id: 3, name: "Jus d'Orange", category: "boissons", image: "/images/jus.jpg" },
-  { id: 4, name: "Bonbons Fraise", category: "confiseries", image: "/images/bonbons.jpg" }
+  { id: 1, name: "Coca-Cola", category: "boissons", price: 1.5, image: "/images/coca.jpg" },
+  { id: 2, name: "Chips BBQ", category: "snacks", price: 2.0, image: "/images/chips-bbq.jpg" },
+  { id: 3, name: "Jus d'Orange", category: "boissons", price: 1.8, image: "/images/jus.jpg" },
+  { id: 4, name: "Bonbons Fraise", category: "confiseries", price: 3.0, image: "/images/bonbons.jpg" }
 ]
 
-export default function CategoryPage () {
+const CategoryPage = () => {
   const { category } = useParams()
   const filteredProducts = allProducts.filter(product => product.category === category)
 
@@ -18,12 +19,7 @@ export default function CategoryPage () {
       <h2>Produits - {category}</h2>
       <div className="product-list">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map(product => (
-            <Link to={`/product/${product.id}`} key={product.id} className="product-card">
-              <img src={product.image} alt={product.name} />
-              <p>{product.name}</p>
-            </Link>
-          ))
+          filteredProducts.map(product => <ProductCard key={product.id} product={product} />)
         ) : (
           <p>Aucun produit trouvé.</p>
         )}
@@ -32,3 +28,4 @@ export default function CategoryPage () {
   )
 }
 
+export default CategoryPage

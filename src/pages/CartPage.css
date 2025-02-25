@@ -20,3 +20,25 @@
 .cart-item button:hover {
     background-color: darkred;
 }
+
+.cart-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.cart-page h2 {
+    margin-bottom: 20px;
+}
+
+.checkout-btn {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background-color: darkgreen;
+}
