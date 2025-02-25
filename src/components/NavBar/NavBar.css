@@ -5,6 +5,7 @@
     background: #ff99cc;
     padding: 10px 20px;
     font-family: Arial, sans-serif;
+    max-width: 100%;
 }
 
 .navbar-left h1 {
