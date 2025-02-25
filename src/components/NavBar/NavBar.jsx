@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import SearchBar from './SearchBar'
 import './NavBar.css'
 
 export default function Navbar () {
@@ -9,6 +10,7 @@ export default function Navbar () {
   return (
     <nav className="navbar">
       <h1>Candy Shop</h1>
+      <SearchBar />
       <p>Bonjour, {user || "Guest"}</p>
       <Link to="/">Accueil</Link>
       <Link to="/cart">Panier</Link>
