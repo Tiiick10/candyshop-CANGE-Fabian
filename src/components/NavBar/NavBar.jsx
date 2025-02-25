@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import SearchBar from './SearchBar'
+import SearchBar from '../SearchBar/SearchBar'
 import './NavBar.css'
 
 export default function Navbar () {

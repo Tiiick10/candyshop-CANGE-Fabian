@@ -1,0 +1,17 @@
+.login {
+    text-align: center;
+    padding: 20px;
+}
+
+.login input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.login button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

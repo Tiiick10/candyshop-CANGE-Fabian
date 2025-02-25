@@ -1,0 +1,23 @@
+.category {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    text-decoration: none;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
