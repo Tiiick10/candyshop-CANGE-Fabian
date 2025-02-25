@@ -39,7 +39,7 @@ export default function CartPage() {
                 <h3>{product.name}</h3>
                 <p>Quantité: {product.quantity}</p>
                 <p>Prix unitaire: {product.price}€</p>
-                <p>Total par article: {(product.price * product.quantity).toFixed(2)}€</p>
+                <p>Total pour cet article : {(product.price * product.quantity).toFixed(2)}€</p>
               </div>
               <button onClick={() => handleRemove(product)}>Retirer</button>
             </div>
