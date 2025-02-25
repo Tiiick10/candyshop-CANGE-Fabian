@@ -1,0 +1,243 @@
+[
+    {
+      "id": 1,
+      "name": "Bonbon Fraise",
+      "price": 2.99,
+      "category": "Bonbons",
+      "image": "/img/fraise.jpg",
+      "quantity": 100
+    },
+    {
+      "id": 2,
+      "name": "Chocolat Noir",
+      "price": 3.50,
+      "category": "Chocolats",
+      "image": "/img/chocolat_noir.jpg",
+      "quantity": 50
+    },
+    {
+      "id": 3,
+      "name": "Soda Cola",
+      "price": 1.99,
+      "category": "Boissons",
+      "image": "/img/soda.png",
+      "quantity": 200
+    },
+    {
+      "id": 4,
+      "name": "Chips Paprika",
+      "price": 2.50,
+      "category": "Snacks",
+      "image": "/img/chips_paprika.jpg",
+      "quantity": 80
+    },
+    {
+      "id": 5,
+      "name": "Caramel Mou",
+      "price": 2.75,
+      "category": "Bonbons",
+      "image": "/img/caramel_mou.webp",
+      "quantity": 120
+    },
+    {
+      "id": 6,
+      "name": "Gaufrette Cacao",
+      "price": 1.80,
+      "category": "Biscuits",
+      "image": "/img/gaufrette.jpg",
+      "quantity": 90
+    },
+    {
+      "id": 7,
+      "name": "Limonade Citron",
+      "price": 1.50,
+      "category": "Boissons",
+      "image": "/img/limonade.jpg",
+      "quantity": 150
+    },
+    {
+      "id": 8,
+      "name": "Nougat aux Amandes",
+      "price": 3.99,
+      "category": "Confiseries",
+      "image": "/img/nougat.jpg",
+      "quantity": 70
+    },
+    {
+      "id": 9,
+      "name": "Barre Énergétique Noisette",
+      "price": 2.20,
+      "category": "Snacks",
+      "image": "/img/barre_noisette.jpg",
+      "quantity": 60
+    },
+    {
+      "id": 10,
+      "name": "Sucettes Fruitées",
+      "price": 1.20,
+      "category": "Bonbons",
+      "image": "/img/sucettes.jpg",
+      "quantity": 300
+    },
+    {
+      "id": 11,
+      "name": "Biscuits au Chocolat",
+      "price": 2.99,
+      "category": "Biscuits",
+      "image": "/img/biscuits_chocolat.jpg",
+      "quantity": 95
+    },
+    {
+      "id": 12,
+      "name": "Gommes aux Fruits",
+      "price": 2.50,
+      "category": "Bonbons",
+      "image": "/img/gommes_fruits.jpg",
+      "quantity": 110
+    },
+    {
+      "id": 13,
+      "name": "Pâte à Tartiner Noisette",
+      "price": 4.99,
+      "category": "Pâtes à tartiner",
+      "image": "/img/pate_tartiner.jpg",
+      "quantity": 30
+    },
+    {
+      "id": 14,
+      "name": "Eau Pétillante Nature",
+      "price": 1.00,
+      "category": "Boissons",
+      "image": "/img/eau_petillante.jpg",
+      "quantity": 250
+    },
+    {
+      "id": 15,
+      "name": "Bonbons Réglisse",
+      "price": 2.10,
+      "category": "Bonbons",
+      "image": "/img/reglisse.jpg",
+      "quantity": 180
+    },
+    {
+      "id": 16,
+      "name": "Cacahuètes Grillées",
+      "price": 3.00,
+      "category": "Snacks",
+      "image": "/img/cacahuetes.jpg",
+      "quantity": 140
+    },
+    {
+      "id": 17,
+      "name": "Boisson Énergisante",
+      "price": 2.75,
+      "category": "Boissons",
+      "image": "/img/boisson_energisante.jpg",
+      "quantity": 60
+    },
+    {
+      "id": 18,
+      "name": "Tartelette Fraise",
+      "price": 3.80,
+      "category": "Pâtisseries",
+      "image": "/img/tartelette_fraise.jpg",
+      "quantity": 45
+    },
+    {
+      "id": 19,
+      "name": "Miel Pur",
+      "price": 5.50,
+      "category": "Autres",
+      "image": "/img/miel.jpg",
+      "quantity": 25
+    },
+    {
+      "id": 20,
+      "name": "Bonbons Acidulés",
+      "price": 2.30,
+      "category": "Bonbons",
+      "image": "/img/acidules.jpg",
+      "quantity": 220
+    },
+    {
+      "id": 21,
+      "name": "Jus de Pomme Bio",
+      "price": 3.20,
+      "category": "Boissons",
+      "image": "/img/jus_pomme.jpg",
+      "quantity": 100
+    },
+    {
+      "id": 22,
+      "name": "Brownie Chocolat",
+      "price": 2.90,
+      "category": "Pâtisseries",
+      "image": "/img/brownie.jpg",
+      "quantity": 50
+    },
+    {
+      "id": 23,
+      "name": "Barre Granola Fruits Rouges",
+      "price": 1.99,
+      "category": "Snacks",
+      "image": "/img/barre_fruits.jpg",
+      "quantity": 120
+    },
+    {
+      "id": 24,
+      "name": "Lait Chocolaté",
+      "price": 1.80,
+      "category": "Boissons",
+      "image": "/img/lait_choco.jpg",
+      "quantity": 90
+    },
+    {
+      "id": 25,
+      "name": "Chocolat Blanc",
+      "price": 3.60,
+      "category": "Chocolats",
+      "image": "/img/chocolat_blanc.jpg",
+      "quantity": 55
+    },
+    {
+      "id": 26,
+      "name": "Tiramisu Classique",
+      "price": 4.50,
+      "category": "Pâtisseries",
+      "image": "/img/tiramisu.jpg",
+      "quantity": 35
+    },
+    {
+      "id": 27,
+      "name": "Céréales au Chocolat",
+      "price": 3.99,
+      "category": "Céréales",
+      "image": "/img/cereales_choco.jpg",
+      "quantity": 130
+    },
+    {
+      "id": 28,
+      "name": "Thé Glacé Pêche",
+      "price": 2.40,
+      "category": "Boissons",
+      "image": "/img/the_glace.jpg",
+      "quantity": 200
+    },
+    {
+      "id": 29,
+      "name": "Pâtes de Fruits",
+      "price": 2.70,
+      "category": "Bonbons",
+      "image": "/img/pates_fruits.jpg",
+      "quantity": 160
+    },
+    {
+      "id": 30,
+      "name": "Crackers Sésame",
+      "price": 2.90,
+      "category": "Snacks",
+      "image": "/img/crackers_sesame.jpg",
+      "quantity": 70
+    }
+  ]
+  
