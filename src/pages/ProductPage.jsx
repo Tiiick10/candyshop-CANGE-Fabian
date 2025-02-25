@@ -15,7 +15,10 @@ export default function ProductPage() {
     fetch('/data.json')
       .then(response => response.json())
       .then(data => {
-        const foundProduct = data.find(prod => prod.id === id)
+
+        // Trouver le produit en comparant l'ID du produit avec l'ID dans l'URL
+
+        const foundProduct = data.find(prod => prod.id === parseInt(id)) // convertit l'ID en entier
         setProduct(foundProduct)
         setLoading(false)
       })
@@ -36,10 +39,10 @@ export default function ProductPage() {
   return (
     <div className="productPage-container">
       <div className="productPage-card">
-        <img src={product.image} alt={product.nom} />
-        <h4>{product.nom}</h4>
+        <img src={product.image} alt={product.name} />
+        <h2>{product.name}</h2>
         <p>Prix: {product.price}€</p>
-        <p>Catégorie: {product.categorie}</p>
+        <p>Catégorie: {product.category}</p>
         <button onClick={() => dispatch(addToCart(product))} className="add-to-cart-btn">
           Ajouter au panier
         </button>

@@ -25,7 +25,7 @@
 .add-to-cart-btn {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #FF6347;
+    background-color: #ff99cc;
     border: none;
     color: white;
     cursor: pointer;
@@ -33,7 +33,7 @@
 }
 
 .add-to-cart-btn:hover {
-    background-color: green;
+    background-color: #fd49a3;
 }
 
 .productPage-card {
