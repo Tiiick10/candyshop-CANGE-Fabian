@@ -5,6 +5,7 @@
     text-align: center;
     background: white;
     transition: transform 0.3s;
+    width: 200px;
 }
 
 .product-card img {

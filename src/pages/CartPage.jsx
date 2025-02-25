@@ -1,29 +1,43 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import CartItem from '../components/CartItem/CartItem'
-import { clearCart } from '../redux/cartSlice'
-import './CartPage.css'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart, clearCart } from '../redux/cartSlice';
 
 const CartPage = () => {
-  const cart = useSelector(state => state.cart.items)
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const user = useSelector(state => state.auth.user)
-  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart.cart);
+  const dispatch = useDispatch();
+
+  const handleRemove = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
+  const handleCheckout = () => {
+    dispatch(clearCart());
+    alert('Commande passée avec succès !');
+  };
+
+  const total = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
 
   return (
     <div className="cart-page">
-      <h2>Votre Panier</h2>
-      {cart.length > 0 ? (
-        <>
-          {cart.map(item => <CartItem key={item.id} item={item} />)}
-          <h3>Total: {total.toFixed(2)}€</h3>
-          {user && <button className="checkout-btn" onClick={() => dispatch(clearCart())}>Passer la commande</button>}
-        </>
+      <h2>Mon Panier</h2>
+      {cart.length === 0 ? (
+        <p>Le panier est vide.</p>
       ) : (
-        <p>Votre panier est vide.</p>
+        <div>
+          {cart.map(product => (
+            <div key={product.id}>
+              <h3>{product.name}</h3>
+              <p>Prix: {product.price}€</p>
+              <p>Quantité: {product.quantity}</p>
+              <button onClick={() => handleRemove(product)}>Retirer du panier</button>
+            </div>
+          ))}
+          <p>Total: {total}€</p>
+          <button onClick={handleCheckout}>Passer la commande</button>
+        </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;
