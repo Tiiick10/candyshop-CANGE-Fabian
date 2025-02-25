@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeFromCart, clearCart } from '../redux/cartSlice'
 import './CartPage.css'
 
-export default function CartPage () {
+export default function CartPage() {
   const cart = useSelector(state => state.cart.cart)
+  const user = useSelector(state => state.auth.user)
   const dispatch = useDispatch()
 
   const handleRemove = (product) => {
@@ -27,18 +28,19 @@ export default function CartPage () {
         <div>
           {cart.map(product => (
             <div key={product.id} className="cart-item">
-              <img src={product.image} alt={product.nom} />
-              <h3>{product.nom}</h3>
+              <img src={product.image} alt={product.name} />
+              <h3>{product.name}</h3>
               <p>Prix: {product.price}€</p>
               <p>Quantité: {product.quantity}</p>
               <button onClick={() => handleRemove(product)}>Retirer du panier</button>
             </div>
           ))}
           <p>Total: {total.toFixed(2)}€</p>
-          <button onClick={handleCheckout}>Passer la commande</button>
+          {user && (
+            <button onClick={handleCheckout}>Passer la commande</button>
+          )}
         </div>
       )}
     </div>
   )
 }
-
