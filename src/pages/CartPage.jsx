@@ -1,27 +1,29 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeFromCart, clearCart } from '../redux/cartSlice'
+import CartItem from '../components/CartItem'
+import { clearCart } from '../redux/cartSlice'
 import './CartPage.css'
 
-export default function CartPage () {
-  const cartItems = useSelector(state => state.cart.cartItems)
+const CartPage = () => {
+  const cart = useSelector(state => state.cart.items)
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const user = useSelector(state => state.auth.user)
   const dispatch = useDispatch()
 
   return (
-    <div className="cart">
+    <div className="cart-page">
       <h2>Votre Panier</h2>
-      {cartItems.length === 0 ? <p>Votre panier est vide.</p> : (
+      {cart.length > 0 ? (
         <>
-          {cartItems.map(item => (
-            <div key={item.id} className="cart-item">
-              <p>{item.name} (x{item.quantity})</p>
-              <button onClick={() => dispatch(removeFromCart(item.id))}>Retirer</button>
-            </div>
-          ))}
-          <button onClick={() => dispatch(clearCart())}>Vider le panier</button>
+          {cart.map(item => <CartItem key={item.id} item={item} />)}
+          <h3>Total: {total.toFixed(2)}€</h3>
+          {user && <button className="checkout-btn" onClick={() => dispatch(clearCart())}>Passer la commande</button>}
         </>
+      ) : (
+        <p>Votre panier est vide.</p>
       )}
     </div>
   )
 }
 
+export default CartPage
