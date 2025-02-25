@@ -1,0 +1,14 @@
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.carousel-item p {
+    margin-top: 8px;
+    font-size: 18px;
+}
