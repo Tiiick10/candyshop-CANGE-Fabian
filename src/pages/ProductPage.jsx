@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
 import './ProductPage.css'
@@ -8,9 +8,11 @@ import LoadingScreen from '../components/LoadingScreen/LoadingScreen'
 export default function ProductPage() {
   const { id } = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
     fetch('/data.json')
@@ -39,6 +41,11 @@ export default function ProductPage() {
   const handleAddToCart = () => {
     const productWithQuantity = { ...product, quantity, totalPrice: (product.price * quantity).toFixed(2) }
     dispatch(addToCart(productWithQuantity))
+    setSuccessMessage("L'article a été ajouté avec succès !")
+
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
   }
 
   if (loading) {
@@ -56,6 +63,8 @@ export default function ProductPage() {
         <h2>{product.name}</h2>
         <p>Prix: {product.price}€</p>
         <p>Catégorie: {product.category}</p>
+
+        {successMessage && <p className="success-message">{successMessage}</p>}
 
         <div className="quantity-control">
           <button onClick={handleDecreaseQuantity}>-</button>

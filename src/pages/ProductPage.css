@@ -89,3 +89,10 @@
 .quantity-control button:hover {
     background-color: #e0e0e0;
 }
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+}
