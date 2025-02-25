@@ -1,44 +1,114 @@
-.cart {
-    padding: 20px;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.cart-item button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.cart-item button:hover {
-    background-color: darkred;
-}
-
+/* Style global du panier */
 .cart-page {
     text-align: center;
     padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+/* Titre du panier */
 .cart-page h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
+    color: #333;
 }
 
-.checkout-btn {
-    background-color: green;
+/* Cart Item: chaque produit du panier */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Image du produit */
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+/* Détails du produit */
+.cart-item h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.cart-item p {
+    color: #777;
+    margin: 5px 0;
+}
+
+/* Quantité et prix */
+.cart-item .quantity {
+    font-size: 1rem;
+    color: #333;
+}
+
+.cart-item .price {
+    font-weight: bold;
+    color: #2d2d2d;
+}
+
+/* Bouton retirer du panier */
+.cart-item button {
+    background-color: #ff4d4d;
     color: white;
-    padding: 10px 15px;
     border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+    background-color: #e60000;
+}
+
+/* Total du panier */
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 1.2rem;
+}
+
+/* Bouton "Passer la commande" */
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .checkout-btn:hover {
-    background-color: darkgreen;
+    background-color: #218838;
+}
+
+/* Style quand le panier est vide */
+.empty-cart {
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 20px;
 }

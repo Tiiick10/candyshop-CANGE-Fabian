@@ -10,15 +10,13 @@ export default function ProductPage() {
   const dispatch = useDispatch()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     fetch('/data.json')
       .then(response => response.json())
       .then(data => {
-
-        // Trouver le produit en comparant l'ID du produit avec l'ID dans l'URL
-
-        const foundProduct = data.find(prod => prod.id === parseInt(id)) // convertit l'ID en entier
+        const foundProduct = data.find(prod => prod.id === parseInt(id))
         setProduct(foundProduct)
         setLoading(false)
       })
@@ -27,6 +25,21 @@ export default function ProductPage() {
         setLoading(false)
       })
   }, [id])
+
+  const handleIncreaseQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1)
+  }
+
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1)
+    }
+  }
+
+  const handleAddToCart = () => {
+    const productWithQuantity = { ...product, quantity, totalPrice: (product.price * quantity).toFixed(2) }
+    dispatch(addToCart(productWithQuantity))
+  }
 
   if (loading) {
     return <LoadingScreen />
@@ -43,7 +56,19 @@ export default function ProductPage() {
         <h2>{product.name}</h2>
         <p>Prix: {product.price}€</p>
         <p>Catégorie: {product.category}</p>
-        <button onClick={() => dispatch(addToCart(product))} className="add-to-cart-btn">
+
+        <div className="quantity-control">
+          <button onClick={handleDecreaseQuantity}>-</button>
+          <input
+            type="number"
+            value={quantity}
+            min="1"
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+          />
+          <button onClick={handleIncreaseQuantity}>+</button>
+        </div>
+
+        <button onClick={handleAddToCart} className="add-to-cart-btn">
           Ajouter au panier
         </button>
       </div>
