@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import './App.css'
 import Home from './pages/Home'
-import CategoryPage from './pages/CategoryPage'
+import SearchPage from './pages/SearchPage'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
@@ -17,7 +17,7 @@ function App () {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginPage />} />
