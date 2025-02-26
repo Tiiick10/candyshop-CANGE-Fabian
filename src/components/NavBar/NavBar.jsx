@@ -46,7 +46,7 @@ export default function Navbar() {
 
       <div className="navbar-right">
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Accueil</Link>
-        <Link to="/cart" className={location.pathname === '/cart' ? 'active' : ''}>🛒 Panier</Link>
+        <Link to="/cart" className={`${location.pathname === '/cart' ? 'active' : ''}`}>🛒 Panier</Link>
 
         {user ? (
           <>

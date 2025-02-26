@@ -65,27 +65,6 @@
     background: darkred;
 }
 
-/* Bulle de comptage */
-
-.cart-link {
-    position: relative;
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background: red;
-    color: white;
-    font-size: 12px;
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
 /* Dropdown menu pour afficher les articles dans le panier */
 
 .dropdown-menu {
