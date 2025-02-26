@@ -1,29 +1,45 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { removeFromCart, clearCart, updateQuantity } from '../redux/cartSlice'
-import './CartPage.css'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart, clearCart, updateQuantity } from '../redux/cartSlice';
+import { useNavigate } from 'react-router-dom';
+import './CartPage.css';
 
 export default function CartPage() {
-  const cart = useSelector(state => state.cart.cart)
-  const user = useSelector(state => state.auth.user)
-  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart.cart);
+  const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [orderNumber, setOrderNumber] = useState(null); // Stocke le numéro de commande
+  const [showPopup, setShowPopup] = useState(false); // Gère l'affichage du pop-up
 
   const handleRemove = (product) => {
-    dispatch(removeFromCart(product))
-  }
+    dispatch(removeFromCart(product));
+  };
 
   const handleQuantityChange = (product, newQuantity) => {
     if (newQuantity >= 1) {
-      dispatch(updateQuantity({ id: product.id, quantity: newQuantity }))
+      dispatch(updateQuantity({ id: product.id, quantity: newQuantity }));
     }
-  }
+  };
+
+  const generateOrderNumber = () => {
+    return `#${Math.floor(100000 + Math.random() * 900000)}`; // Génère un numéro aléatoire à 6 chiffres
+  };
 
   const handleCheckout = () => {
-    dispatch(clearCart())
-    alert('Commande passée avec succès !')
-  }
+    const newOrderNumber = generateOrderNumber();
+    setOrderNumber(newOrderNumber);
+    setShowPopup(true);
+    dispatch(clearCart()); // Vide le panier après l'achat
+  };
 
-  const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
+  const closePopup = () => {
+    setShowPopup(false);
+    navigate('/'); // Redirige vers l'accueil après fermeture
+  };
+
+  const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
 
   return (
     <div className="cart-page">
@@ -48,11 +64,30 @@ export default function CartPage() {
             <span>Total:</span>
             <span>{total.toFixed(2)}€</span>
           </div>
-          {user && (
+
+          {user ? (
             <button onClick={handleCheckout} className="checkout-btn">Passer la commande</button>
+          ) : (
+            <p className="login-message">
+              Veuillez <span onClick={() => navigate('/login')} className="login-link">vous connecter</span> pour passer commande.
+            </p>
           )}
         </div>
       )}
+
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>Merci pour votre commande ! 🎉</h3>
+            <p>
+              Si vous avez la moindre question, n'hésitez pas à nous contacter à  
+              <strong> info@candyshop.be</strong> en mentionnant votre numéro de commande dans l'objet.
+            </p>
+            <p className="order-number">Commande n° {orderNumber}</p>
+            <button className="close-popup-btn" onClick={closePopup}>Fermer</button>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
