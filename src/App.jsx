@@ -9,6 +9,7 @@ import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import Navbar from './components/NavBar/NavBar'
+import CategoryPage from './pages/CategoryPage'
 
 function App () {
   return (
@@ -19,6 +20,7 @@ function App () {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>

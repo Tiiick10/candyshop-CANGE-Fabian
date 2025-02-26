@@ -1,45 +1,45 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, clearCart, updateQuantity } from '../redux/cartSlice';
-import { useNavigate } from 'react-router-dom';
-import './CartPage.css';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFromCart, clearCart, updateQuantity } from '../redux/cartSlice'
+import { useNavigate } from 'react-router-dom'
+import './CartPage.css'
 
 export default function CartPage() {
-  const cart = useSelector(state => state.cart.cart);
-  const user = useSelector(state => state.auth.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const cart = useSelector(state => state.cart.cart)
+  const user = useSelector(state => state.auth.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [orderNumber, setOrderNumber] = useState(null); // Stocke le numéro de commande
-  const [showPopup, setShowPopup] = useState(false); // Gère l'affichage du pop-up
+  const [orderNumber, setOrderNumber] = useState(null)
+  const [showPopup, setShowPopup] = useState(false)
 
   const handleRemove = (product) => {
-    dispatch(removeFromCart(product));
-  };
+    dispatch(removeFromCart(product))
+  }
 
   const handleQuantityChange = (product, newQuantity) => {
     if (newQuantity >= 1) {
-      dispatch(updateQuantity({ id: product.id, quantity: newQuantity }));
+      dispatch(updateQuantity({ id: product.id, quantity: newQuantity }))
     }
-  };
+  }
 
   const generateOrderNumber = () => {
-    return `#${Math.floor(100000 + Math.random() * 900000)}`; // Génère un numéro aléatoire à 6 chiffres
-  };
+    return `#${Math.floor(100000 + Math.random() * 900000)}`
+  }
 
   const handleCheckout = () => {
-    const newOrderNumber = generateOrderNumber();
-    setOrderNumber(newOrderNumber);
-    setShowPopup(true);
-    dispatch(clearCart()); // Vide le panier après l'achat
-  };
+    const newOrderNumber = generateOrderNumber()
+    setOrderNumber(newOrderNumber)
+    setShowPopup(true)
+    dispatch(clearCart())
+  }
 
   const closePopup = () => {
-    setShowPopup(false);
-    navigate('/'); // Redirige vers l'accueil après fermeture
-  };
+    setShowPopup(false)
+    navigate('/')
+  }
 
-  const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+  const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
 
   return (
     <div className="cart-page">
@@ -89,5 +89,5 @@ export default function CartPage() {
         </div>
       )}
     </div>
-  );
+  )
 }

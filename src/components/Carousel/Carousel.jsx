@@ -37,7 +37,7 @@ export default function Carousel() {
     if (products.length > 0) {
       const interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length)
-      }, 3000)
+      }, 5000)
 
       return () => clearInterval(interval)
     }
