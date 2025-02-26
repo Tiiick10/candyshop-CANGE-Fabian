@@ -4,25 +4,19 @@
     align-items: center;
     background: #ff99cc;
     padding: 10px 20px;
-    font-family: Arial, sans-serif;
-    max-width: 100%;
+    flex-wrap: wrap;
 }
-
+  
 .navbar-left h1 {
     font-size: 24px;
     color: white;
-}
-
-.navbar-center {
-    flex-grow: 1;
-    text-align: center;
-}
-
+ }
+  
 .navbar-right {
     display: flex;
     align-items: center;
     gap: 15px;
-}
+}  
 
 .navbar a {
     text-decoration: none;
@@ -39,6 +33,19 @@
     font-weight: bold;
 }
 
+.login-btn {
+    background: #ff2788;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-btn:hover {
+    background: #a5547a;
+}
+
 .logout-btn {
     background: red;
     color: white;
@@ -53,23 +60,26 @@
 }
 
 /* Bulle de comptage */
+
 .cart-link {
     position: relative;
 }
 
 .cart-count {
     position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -100%;
-    right: -15%;
-    background-color: red;
-    color: white;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
 }
+
 
 /* Dropdown menu pour afficher les articles dans le panier */
 
@@ -77,6 +87,7 @@
     position: absolute;
     top: 40px;
     left: 0;
+    transform: translateX(-100%);
     background-color: #fff;
     color: #333;
     padding: 10px;
@@ -118,3 +129,31 @@
 .dropdown-item:hover {
     background-color: #f0f0f0;
 }
+
+@media screen and (max-width: 1440px) {
+    .navbar {
+        gap: 40%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .navbar-right {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar a, .logout-btn, .login-btn {
+        font-size: 16px;
+    }
+
+    .dropdown-menu {
+        display: none;
+    }
+}
+
