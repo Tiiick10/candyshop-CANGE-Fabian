@@ -8,7 +8,6 @@ const SearchPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const location = useLocation()
   
-  // Récupère les paramètres de l'URL (query et category)
   const queryParams = new URLSearchParams(location.search)
   const query = queryParams.get('query') || ''
   const category = queryParams.get('category') || ''
@@ -26,11 +25,13 @@ const SearchPage = () => {
     let filtered = products
 
     // Filtrage par catégorie
+
     if (category) {
       filtered = filtered.filter((product) => product.category === category)
     }
 
     // Filtrage par nom (si un terme de recherche est fourni)
+
     if (query) {
       filtered = filtered.filter((product) =>
         product.name.toLowerCase().includes(query.toLowerCase())
@@ -42,7 +43,7 @@ const SearchPage = () => {
 
   return (
     <div className="search-page">
-      <h2>Résultats de la recherche</h2>
+      <h1>Résultats de la recherche</h1>
       <div className="product-list">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => <ProductCard key={product.id} product={product} />)
