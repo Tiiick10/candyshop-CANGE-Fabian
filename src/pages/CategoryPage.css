@@ -6,9 +6,70 @@
 
 .product-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    align-items: center;
     width: 100%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .product-list {
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media screen and (max-width: 425px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media screen and (max-width: 375px) {
+    .product-list {
+        grid-template-columns: repeat(1, 1fr);
+        padding-left: 15px;
+    }
+
+    .product-card {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }
