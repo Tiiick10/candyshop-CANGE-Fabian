@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../redux/authSlice'
@@ -14,6 +14,9 @@ export default function Navbar() {
   const [categories, setCategories] = useState([])
   const location = useLocation()
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const burgerMenuRef = useRef(null)
+
   useEffect(() => {
     fetch('/data.json')
       .then(response => response.json())
@@ -24,6 +27,21 @@ export default function Navbar() {
       .catch(error => console.error('Erreur de chargement des catégories:', error))
   }, [])
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (burgerMenuRef.current && !burgerMenuRef.current.contains(event.target)) {
+        
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   const handleLogout = () => {
     dispatch(logout())
   }
@@ -33,8 +51,6 @@ export default function Navbar() {
       <div className="navbar-left">
         <h1>Candy Shop <LuCandy /></h1>
       </div>
-
-      {/* Affichage normal des catégories en mode desktop */}
 
       <div className="navbar-categories">
         {categories.map(category => (
@@ -48,15 +64,13 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Navbar droite affichée uniquement en mode desktop */}
-
       <div className="navbar-right">
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Accueil</Link>
         <Link to="/cart" className={`${location.pathname === '/cart' ? 'active' : ''}`}>🛒 Panier</Link>
 
         {user ? (
           <>
-            <span className="navbar-user">Bonjour, {user} 👋</span>
+            {/* <span className="navbar-user">Bonjour, {user} 👋</span> */}
             <button onClick={handleLogout} className="logout-btn">Déconnexion</button>
           </>
         ) : (
@@ -64,23 +78,27 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Burger Menu */}
-
-      <div className="burger-menu">
-        <Menu right noOverlay width={'250px'} customBurgerIcon={ <img src="public/img/candy.svg" /> } className="scale-down-menu">
+      <div className="burger-menu" ref={burgerMenuRef}>
+        <Menu
+          right
+          noOverlay
+          width={'250px'}
+          customBurgerIcon={<img src="public/img/candy.svg" />}
+          isOpen={isMenuOpen}
+          onStateChange={({ isOpen }) => setIsMenuOpen(isOpen)}
+          className="scale-down-menu"
+        >
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>🏠 Accueil</Link>
           <Link to="/cart" className={`${location.pathname === '/cart' ? 'active' : ''}`}>🛒 Panier</Link>
 
           {user ? (
             <>
-              <span className="navbar-user">Bonjour, {user} 👋</span>
+              {/* <span className="navbar-user">Bonjour, {user} 👋</span> */}
               <button onClick={handleLogout} className="logout-btn">Déconnexion</button>
             </>
           ) : (
             <button onClick={() => setIsModalOpen(true)} className="login-btn">Connexion</button>
           )}
-
-          {/* Liens des catégories dans le Burger Menu */}
 
           <div className="burger-categories">
             {categories.map(category => (

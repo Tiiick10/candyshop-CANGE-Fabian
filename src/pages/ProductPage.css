@@ -103,7 +103,13 @@
     }
 
     .productPage-card {
-        max-width: 90%;
+        width: 50%;
+        height: 40vh;
+    }
+
+    .productPage-card img {
+        height: 10vh;
+        object-fit: contain;
     }
 }
 
