@@ -5,7 +5,7 @@
     min-height: 100vh;
     position: relative;
     background-image: url('public/img/bg_image.webp');
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
