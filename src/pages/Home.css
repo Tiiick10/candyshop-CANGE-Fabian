@@ -2,6 +2,30 @@
     text-align: center;
     padding: 20px;
     max-width: 100%;
+    position: relative;
+    background-image: url('public/img/bg_image.webp');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.welcome {
+    position: relative;
+    z-index: 999;
+}
+
+/* Overlay blanc avec opacité */
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
 }
 
 .product-list-home {
@@ -10,6 +34,8 @@
     gap: 20px;
     justify-items: center;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 @media screen and (max-width: 1445px) {
@@ -54,5 +80,4 @@
     .product-card img {
         width: 100%;
     }
-    
 }

@@ -62,7 +62,7 @@ export default function ProductPage() {
         <img src={product.image} alt={product.name} />
         <h2>{product.name}</h2>
         <p>Prix: {product.price}€</p>
-        <p>Catégorie: {product.category}</p>
+        <p>Catégorie: {product.category_name}</p>
 
         {successMessage && <p className="success-message">{successMessage}</p>}
 

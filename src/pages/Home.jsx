@@ -47,10 +47,10 @@ export default function Home() {
 
   return (
     <div className="home">
-      <h1>Bienvenue chez Candy Shop <LuCandy /></h1>
+      <h1 className='welcome'>Bienvenue chez Candy Shop <LuCandy /></h1>
       <Carousel />
 
-      <h2>Nos Produits</h2>
+      <h2 className='welcome'>Nos Produits</h2>
       
       <SearchBar filterProducts={filterProducts} />
 

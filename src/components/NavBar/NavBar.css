@@ -112,11 +112,15 @@
 
 .bm-menu {
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
     background: #ff99cc;
     padding: 2em 1.5em;
     font-size: 1.2em;
+    width: 250px;
+    top: -75px;
+    height: 110% !important;
 }
 
 .bm-menu a {

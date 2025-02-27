@@ -45,14 +45,6 @@ export default function SearchBar({ filterProducts }) {
             value={query}
             onChange={handleSearch}
           />
-          <select onChange={handleCategoryChange} value={category}>
-            <option value="">Toutes les catégories</option>
-            {Array.from(new Set(products.map((p) => p.category))).map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
         </div>
       </form>
     </div>

@@ -20,6 +20,8 @@ export default function CartPage() {
   const handleQuantityChange = (product, newQuantity) => {
     if (newQuantity >= 1) {
       dispatch(updateQuantity({ id: product.id, quantity: newQuantity }))
+    } else {
+      dispatch(removeFromCart(product))
     }
   }
 
@@ -47,7 +49,7 @@ export default function CartPage() {
       {cart.length === 0 ? (
         <p className="empty-cart">Le panier est vide.</p>
       ) : (
-        <div>
+        <div className='cart-items'>
           {cart.map(product => (
             <div key={product.id} className="cart-item">
             <img src={product.image} alt={product.name} />

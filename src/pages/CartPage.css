@@ -1,8 +1,26 @@
 .cart-page {
     text-align: center;
     padding: 20px;
-    max-width: 800px;
+    max-width: 100%;
+    height: 100vh;
     margin: 0 auto;
+    position: relative;
+    background-image: url('public/img/bg_image.webp');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.cart-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
 }
 
 /* Titre du panier */
@@ -10,7 +28,21 @@
 .cart-page h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: black;
+    position: relative;
+    z-index: 2;
+}
+
+.cart-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 /* Chaque produit du panier */
@@ -25,12 +57,9 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    text-align: left;
+    position: relative;
+    z-index: 2;
+    width: 35%;
 }
 
 .cart-item:hover {
@@ -121,7 +150,10 @@
     margin-top: 20px;
     padding: 10px;
     border-top: 1px solid #ddd;
-    font-size: 1.2rem;
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
 }
 
 /* Bouton "Passer la commande" */
@@ -134,20 +166,26 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 20px;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .checkout-btn:hover {
     background-color: #218838;
+    
 }
 
 /* Style quand le panier est vide */
 
 .empty-cart {
     font-size: 1.2rem;
-    color: #777;
+    color: black;
     margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
 }
 
 /* Popup */

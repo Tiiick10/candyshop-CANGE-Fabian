@@ -28,7 +28,12 @@ export default function Navbar() {
     fetch('/data.json')
       .then(response => response.json())
       .then(data => {
-        const uniqueCategories = Array.from(new Set(data.map(product => product.category)))
+        const uniqueCategories = Array.from(
+          new Map(data.map(product => [product.category_id, { 
+            category_id: product.category_id, 
+            category_name: product.category_name 
+          }])).values()
+        )
         setCategories(uniqueCategories)
       })
       .catch(error => console.error('Erreur de chargement des catégories:', error))
@@ -66,19 +71,19 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <h1>Candy Shop <LuCandy /></h1>
-      </div>
+      </div> 
 
       {/* Affichage des catégories dans la NavBar */}
 
       <div className="navbar-categories">
         {categories.map(category => (
           <Link
-            key={category}
-            to={`/category/${category}`}
-            className={`category-link ${location.pathname.includes(`/category/${category}`) ? 'active' : ''}`}
-            onClick={handleLinkClick}  // Ferme le menu burger lorsque ce lien est cliqué
+            key={category.category_name}
+            to={`/category/${category.category_id}`} 
+            className={`category-link ${location.pathname === `/category/${category.category_id}` ? 'active' : ''}`}
+            onClick={handleLinkClick}
           >
-            {category}
+            {category.category_name}  
           </Link>
         ))}
       </div>
@@ -150,12 +155,12 @@ export default function Navbar() {
           <div className="burger-categories">
             {categories.map(category => (
               <Link
-                key={category}
-                to={`/category/${category}`}
-                className={`category-link ${location.pathname.includes(`/category/${category}`) ? 'active' : ''}`}
+                key={category.category_id}
+                to={`/category/${category.category_id}`}
+                className={`category-link ${location.pathname === `/category/${category.category_id}` ? 'active' : ''}`}
                 onClick={handleLinkClick}
               >
-                {category}
+                {category.category_name}
               </Link>
             ))}
           </div>
