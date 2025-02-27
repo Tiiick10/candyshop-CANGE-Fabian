@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel/Carousel'
 import './Home.css'
 import LoadingScreen from '../components/LoadingScreen/LoadingScreen'
 import SearchBar from '../components/SearchBar/SearchBar'
+import { LuCandy } from "react-icons/lu"
 
 export default function Home() {
   const [products, setProducts] = useState([])
@@ -46,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="home">
-      <h1>Bienvenue chez Candy Shop 🍬</h1>
+      <h1>Bienvenue chez Candy Shop <LuCandy /></h1>
       <Carousel />
 
       <h2>Nos Produits</h2>

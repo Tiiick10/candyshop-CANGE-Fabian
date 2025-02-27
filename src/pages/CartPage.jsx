@@ -50,15 +50,22 @@ export default function CartPage() {
         <div>
           {cart.map(product => (
             <div key={product.id} className="cart-item">
-              <img src={product.image} alt={product.name} />
-              <div>
-                <h3>{product.name}</h3>
-                <p>Quantité: {product.quantity}</p>
-                <p>Prix unitaire: {product.price}€</p>
-                <p>Total pour cet article : {(product.price * product.quantity).toFixed(2)}€</p>
-              </div>
-              <button onClick={() => handleRemove(product)}>Retirer</button>
+            <img src={product.image} alt={product.name} />
+            
+            <div className="cart-item-details">
+              <h3>{product.name}</h3>
+              <p className="price">Prix unitaire: {product.price}€</p>
+              <p className="price">Total: {(product.price * product.quantity).toFixed(2)}€</p>
             </div>
+          
+            <div className="quantity-controls">
+              <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
+              <span>{product.quantity}</span>
+              <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
+            </div>
+          
+            <button className="remove-btn" onClick={() => handleRemove(product)}>Retirer</button>
+          </div>
           ))}
           <div className="total-container">
             <span>Total:</span>

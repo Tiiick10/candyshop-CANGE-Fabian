@@ -39,7 +39,7 @@ const SearchPage = () => {
     }
 
     setFilteredProducts(filtered)
-  }, [products, query, category]) // Re-filtrer lorsque les produits, la recherche ou la catégorie changent
+  }, [products, query, category]) // Re-filtrer lorsque les produits si la recherche ou la catégorie changent
 
   return (
     <div className="search-page">

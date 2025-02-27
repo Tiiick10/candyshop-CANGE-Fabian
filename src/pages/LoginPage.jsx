@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../redux/authSlice';
-import './LoginPage.css';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { login } from '../redux/authSlice'
+import './LoginPage.css'
 
 export default function ModalLogin({ isOpen, onClose }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const dispatch = useDispatch();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const dispatch = useDispatch()
 
-  if (!isOpen) return null; // Cache le modal si isOpen est false
+  if (!isOpen) return null
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (username === 'admin' && password === 'admin') {
-      dispatch(login(username));
-      onClose(); // Ferme le modal après connexion
+      dispatch(login(username))
+      onClose()
     } else {
-      setError('Identifiants incorrects');
+      setError('Identifiants incorrects')
     }
-  };
+  }
 
   return (
     <div className="modal-overlay">
@@ -46,5 +46,5 @@ export default function ModalLogin({ isOpen, onClose }) {
         </form>
       </div>
     </div>
-  );
+  )
 }
