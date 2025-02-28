@@ -134,7 +134,7 @@ export default function Navbar() {
           right
           noOverlay
           width={'250px'}
-          customBurgerIcon={<img src="public/img/candy.svg" />}
+          customBurgerIcon={<img src="img/candy.svg" />}
           isOpen={isMenuOpen}
           onStateChange={({ isOpen }) => setIsMenuOpen(isOpen)}
           className="scale-down-menu"

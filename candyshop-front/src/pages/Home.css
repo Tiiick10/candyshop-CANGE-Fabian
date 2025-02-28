@@ -3,7 +3,7 @@
     padding: 20px;
     max-width: 100%;
     position: relative;
-    background-image: url('public/img/bg_image.webp');
+    background-image: url('/img/bg_image.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

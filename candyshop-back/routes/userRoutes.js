@@ -29,19 +29,39 @@ router.post("/register", async (req, res) => {
 // Connexion
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body
 
-  try {
-    const user = await User.findOne({ email })
-    if (!user) return res.status(400).json({ message: "Utilisateur non trouvé." })
+    console.log(req.body);
 
-    const isMatch = await bcrypt.compare(password, user.password)
-    if (!isMatch) return res.status(400).json({ message: "Mot de passe incorrect." })
-
-    res.json({ message: "Connexion réussie", user: user.username })
-  } catch (error) {
-    res.status(500).json({ message: "Erreur serveur" })
-  }
-})
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email et mot de passe sont requis." });
+    }
+  
+    try {
+      db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
+        if (!user) {
+          return res.status(400).json({ message: "Utilisateur non trouvé." });
+        }
+  
+        // Vérification du mot de passe
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          return res.status(400).json({ message: "Mot de passe incorrect." });
+        }
+  
+        // Génération du token JWT
+        const token = jwt.sign({ id: user.id, username: user.username }, 'your_secret_key', { expiresIn: '1h' });
+  
+        // Réponse avec un message et le token
+        res.json({ message: "Connexion réussie", token, user: { id: user.id, username: user.username } });
+      });
+    } catch (error) {
+      console.error("Erreur serveur:", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+  
+  
 
 module.exports = router

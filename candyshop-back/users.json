@@ -4,5 +4,17 @@
     "username": "admin",
     "email": "admin@admin.com",
     "password": "$2b$10$AUKSMJadX7h.IZUJ2Zxh/u7Zd8pwxcPmY5GrPIjrPhyZu7uKCfRQ6"
+  },
+  {
+    "id": 1740744722796,
+    "username": "Fab",
+    "email": "fabian.cange@hotmail.fr",
+    "password": "$2b$10$65xLx7PfP6Z4jIPtLYEroO5kbXijhlTPHYFEbuVqOAbHmBAtMCcGi"
+  },
+  {
+    "id": 1740744953794,
+    "username": "fab",
+    "email": "fab.charlewood@gmail.com",
+    "password": "$2b$10$3FBP8Wdb61f35GwFN1r4deoDTT1ho8mue0oGTKqP0.P52ds64nj9y"
   }
 ]
