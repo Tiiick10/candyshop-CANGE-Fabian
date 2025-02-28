@@ -36,32 +36,84 @@
     width: 100%;
     position: relative;
     z-index: 2;
+    transition: grid-template-columns 0.3s ease;
+}
+
+/* Animation sur les cartes de produits */
+
+.product-card {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Search Bar */
+
+.search-bar input {
+    transition: width 0.3s ease;
+    width: 60%;
+}
+
+.search-bar input:focus {
+    width: 100%;
+}
+
+/* Style du titre des sections */
+
+.product-title {
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.home-header {
+    margin-bottom: 20px;
+}
+
+.home-header h1 {
+    font-size: 3rem;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.product-section {
+    padding: 40px 0;
+}
+
+.product-list-home {
+    margin-top: 30px;
+}
+
+.modal-content-login .connectBtn,
+.product-card .product-title {
+    transition: background-color 0.3s ease;
+}
+
+.product-card:hover .product-title {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width: 1445px) {
     .product-list-home {
         grid-template-columns: repeat(5, 1fr);
-    } 
-
-    .product-card {
-        width: 65%;
     }
 }
 
 @media screen and (max-width: 1200px) {
     .product-list-home {
         grid-template-columns: repeat(4, 1fr);
-    } 
-
-    .product-card {
-        width: 65%;
     }
 }
 
 @media screen and (max-width: 800px) {
     .product-list-home {
         grid-template-columns: repeat(3, 1fr);
-    } 
+    }
 
     .search-bar input {
         width: 75%;
@@ -71,7 +123,7 @@
 @media screen and (max-width: 426px) {
     .product-list-home {
         grid-template-columns: repeat(1, 1fr);
-    } 
+    }
 
     .product-card {
         width: 65%;

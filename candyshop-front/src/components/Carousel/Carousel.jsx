@@ -25,7 +25,7 @@ export default function Carousel() {
       fetch('/data.json')
         .then((response) => response.json())
         .then((data) => {
-          const shuffledProducts = shuffleArray(data).slice(0, 10)
+          const shuffledProducts = shuffleArray(data).slice(0, 4)
           setProducts(shuffledProducts)
           localStorage.setItem('carouselProducts', JSON.stringify(shuffledProducts))
         })

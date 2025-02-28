@@ -4,12 +4,13 @@ import Carousel from '../components/Carousel/Carousel'
 import './Home.css'
 import LoadingScreen from '../components/LoadingScreen/LoadingScreen'
 import SearchBar from '../components/SearchBar/SearchBar'
-import { LuCandy } from "react-icons/lu"
+import { LuCandy } from 'react-icons/lu'
 
 export default function Home() {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     fetch('/data.json')
@@ -41,24 +42,43 @@ export default function Home() {
     setFilteredProducts(filtered)
   }
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value)
+    filterProducts(event.target.value)
+  }
+
   if (loading) {
     return <LoadingScreen />
   }
 
   return (
     <div className="home">
-      <h1 className='welcome'>Bienvenue chez Candy Shop <LuCandy /></h1>
-      <Carousel />
+      <header className="home-header">
+        <h1 className="welcome">
+          Bienvenue chez Candy Shop <LuCandy />
+        </h1>
+        <Carousel />
+      </header>
 
-      <h2 className='welcome'>Nos Produits</h2>
-      
-      <SearchBar filterProducts={filterProducts} />
+      <section className="product-section">
+        <h2 className="product-title">Nos Produits</h2>
 
-      <div className="product-list-home">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchChange={handleSearchChange}
+          filterProducts={filterProducts}
+        />
+
+        {filteredProducts.length === 0 && (
+          <p className="no-results">Aucun produit trouvé, essayez un autre terme.</p>
+        )}
+
+        <div className="product-list-home">
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
     </div>
   )
 }
