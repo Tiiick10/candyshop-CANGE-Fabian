@@ -57,6 +57,7 @@ export default function Home() {
         <h1 className="welcome">
           Bienvenue chez Candy Shop <LuCandy />
         </h1>
+        <h2 className="welcome">Des douceurs sucrées pour tous les goûts !</h2>
         <Carousel />
       </header>
 
