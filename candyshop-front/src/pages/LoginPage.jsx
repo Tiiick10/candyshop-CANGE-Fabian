@@ -1,23 +1,37 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from '../redux/authSlice'
-import './LoginPage.css'
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { login } from "../redux/authSlice"
+import "./LoginPage.css"
 
-export default function ModalLogin({ isOpen, onClose }) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+export default function ModalLogin({ isOpen, onClose, openRegister }) {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
   const dispatch = useDispatch()
 
   if (!isOpen) return null
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    if (username === 'admin' && password === 'admin') {
-      dispatch(login(username))
+    setError("")
+
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: username, password }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || "Erreur de connexion")
+      }
+
+      dispatch(login(data.user))
       onClose()
-    } else {
-      setError('Identifiants incorrects')
+    } catch (error) {
+      setError(error.message)
     }
   }
 
@@ -29,8 +43,8 @@ export default function ModalLogin({ isOpen, onClose }) {
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleLogin}>
           <input
-            type="text"
-            placeholder="Nom d'utilisateur"
+            type="email"
+            placeholder="Adresse email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -42,8 +56,12 @@ export default function ModalLogin({ isOpen, onClose }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className='connectBtn'>Se connecter</button>
+          <button type="submit" className="connectBtn">Se connecter</button>
         </form>
+        <p className="register-link">
+          Pas encore de compte ?{" "}
+          <span onClick={openRegister} className="switch-modal">Créer un compte</span>
+        </p>
       </div>
     </div>
   )
