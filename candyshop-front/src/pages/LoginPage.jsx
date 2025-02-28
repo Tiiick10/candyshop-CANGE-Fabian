@@ -16,31 +16,14 @@ export default function ModalLogin({ isOpen, onClose, openRegister }) {
     setError("")
   
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: username, password }),
-      })
-  
-      const data = await response.json()
-  
-      if (!response.ok) {
-        throw new Error(data.message || "Erreur de connexion")
-      }
-  
-      dispatch(login(data.user))
-      
-      // Réinitialisation des champs après connexion
-
-      setUsername("")
-      setPassword("")
-  
+      const response = await axios.post('http://localhost:5000/login', { username, password }) 
+      dispatch(login(response.data.user))
       onClose()
-    } catch (error) {
-      setError(error.message)
+      } catch (err) {
+        setError('Identifiants incorrects')
+      }
     }
-  }
-
+  
   return (
     <div className="modal-overlay">
       <div className="modal-content-login">
