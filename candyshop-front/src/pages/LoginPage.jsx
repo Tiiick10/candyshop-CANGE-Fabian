@@ -14,21 +14,27 @@ export default function ModalLogin({ isOpen, onClose, openRegister }) {
   const handleLogin = async (e) => {
     e.preventDefault()
     setError("")
-
+  
     try {
       const response = await fetch("http://localhost:5000/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: username, password }),
       })
-
+  
       const data = await response.json()
-
+  
       if (!response.ok) {
         throw new Error(data.message || "Erreur de connexion")
       }
-
+  
       dispatch(login(data.user))
+      
+      // Réinitialisation des champs après connexion
+
+      setUsername("")
+      setPassword("")
+  
       onClose()
     } catch (error) {
       setError(error.message)
@@ -37,7 +43,7 @@ export default function ModalLogin({ isOpen, onClose, openRegister }) {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className="modal-content-login">
         <button className="close-btn" onClick={onClose}>✖</button>
         <h2>Connexion</h2>
         {error && <p className="error-message">{error}</p>}
@@ -60,7 +66,7 @@ export default function ModalLogin({ isOpen, onClose, openRegister }) {
         </form>
         <p className="register-link">
           Pas encore de compte ?{" "}
-          <span onClick={openRegister} className="switch-modal">Créer un compte</span>
+          <span onClick={openRegister} className="switch-modal-register">Créer un compte</span>
         </p>
       </div>
     </div>

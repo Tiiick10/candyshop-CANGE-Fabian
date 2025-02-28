@@ -15,31 +15,40 @@ export default function RegisterPage({ isOpen, onClose, openLogin }) {
     e.preventDefault()
     setError("")
     setSuccess("")
-
+  
     if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas.")
       return
     }
-
+  
     try {
       const response = await fetch("http://localhost:5000/api/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
       })
-
+  
       const data = await response.json()
-
+  
       if (!response.ok) {
         throw new Error(data.message || "Erreur lors de l'inscription")
       }
-
+  
       setSuccess("Compte créé avec succès ! Vous pouvez maintenant vous connecter.")
+  
+      // Réinitialisation des champs après inscription
+
+      setUsername("")
+      setEmail("")
+      setPassword("")
+      setConfirmPassword("")
+  
       setTimeout(openLogin, 2000) // Ouvre connexion après 2s
     } catch (error) {
       setError(error.message)
     }
   }
+  
 
   return (
     <div className="modal-overlay">
@@ -81,7 +90,7 @@ export default function RegisterPage({ isOpen, onClose, openLogin }) {
         </form>
         <p className="login-link">
           Déjà un compte ?{" "}
-          <span onClick={openLogin} className="switch-modal">Se connecter</span>
+          <span onClick={openLogin} className="switch-modal-login">Se connecter</span>
         </p>
       </div>
     </div>

@@ -23,7 +23,7 @@
     text-align: center;
     position: relative;
     width: 400px;
-    height: 250px;
+    height: 420px;
 }
 
 .close-btn {
@@ -57,7 +57,7 @@
     font-weight: bold;
 }
 
-.connectBtn {
+.registerBtn {
     background: #ff99cc;
     color: white;
     border: none;
@@ -67,10 +67,15 @@
     width: 95%;
 }
 
+.switch-modal-login {
+    color: black !important;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
     .modal-content {
         width: 70%;
-        height: 25%;
+        height: 45%;
     }
 
     .close-btn {
@@ -79,7 +84,7 @@
         max-width: 15%;
     }
 
-    .connectBtn {
+    .registerBtn {
         max-width: 85%;
         padding: 15px;
     }

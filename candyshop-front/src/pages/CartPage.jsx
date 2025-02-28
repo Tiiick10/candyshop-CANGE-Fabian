@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeFromCart, clearCart, updateQuantity } from '../redux/cartSlice'
 import { useNavigate } from 'react-router-dom'
+import LoginPage from '../pages/LoginPage'
 import './CartPage.css'
 
 export default function CartPage() {
@@ -12,6 +13,7 @@ export default function CartPage() {
 
   const [orderNumber, setOrderNumber] = useState(null)
   const [showPopup, setShowPopup] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
   const handleRemove = (product) => {
     dispatch(removeFromCart(product))
@@ -52,22 +54,22 @@ export default function CartPage() {
         <div className='cart-items'>
           {cart.map(product => (
             <div key={product.id} className="cart-item">
-            <img src={product.image} alt={product.name} />
+              <img src={product.image} alt={product.name} />
+              
+              <div className="cart-item-details">
+                <h3>{product.name}</h3>
+                <p className="price">Prix unitaire: {product.price}€</p>
+                <p className="price">Total: {(product.price * product.quantity).toFixed(2)}€</p>
+              </div>
             
-            <div className="cart-item-details">
-              <h3>{product.name}</h3>
-              <p className="price">Prix unitaire: {product.price}€</p>
-              <p className="price">Total: {(product.price * product.quantity).toFixed(2)}€</p>
+              <div className="quantity-controls">
+                <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
+                <span>{product.quantity}</span>
+                <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
+              </div>
+            
+              <button className="remove-btn" onClick={() => handleRemove(product)}>Retirer</button>
             </div>
-          
-            <div className="quantity-controls">
-              <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
-              <span>{product.quantity}</span>
-              <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
-            </div>
-          
-            <button className="remove-btn" onClick={() => handleRemove(product)}>Retirer</button>
-          </div>
           ))}
           <div className="total-container">
             <span>Total:</span>
@@ -78,11 +80,13 @@ export default function CartPage() {
             <button onClick={handleCheckout} className="checkout-btn">Passer la commande</button>
           ) : (
             <p className="login-message">
-              Veuillez <span onClick={() => navigate('/login')} className="login-link">vous connecter</span> pour passer commande.
+              Veuillez <span onClick={() => setIsLoginModalOpen(true)} className="login-link">vous connecter</span> pour passer commande.
             </p>
           )}
         </div>
       )}
+
+      <LoginPage isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
 
       {showPopup && (
         <div className="popup-overlay">
